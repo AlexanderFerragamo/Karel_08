@@ -1,35 +1,36 @@
 /**
- * A BoxTopRacer is a Racer that can jump over hurdles of any width.
- * 
- * @author <...>
- * @version <...>
- *
- */
- 
+*  <Describe that the Racer class does>
+*
+*  @author Alexander
+*  @version November 5
+*/
 import edu.fcps.karel2.Display;
 import edu.fcps.karel2.Robot;
 
 
-public class BoxTopRacer extends Racer {
-	
-   public BoxTopRacer(int y)
+public class Racer extends Athlete {
+
+   public Racer(int y)
    {
-   super(y);
+   super(1, y, Display.EAST, Display.INFINITY);
    }
-   
+   public void jumpRight()
+   {
+   turnLeft();
+   move();
+   turnRight();
+   move();
+   turnRight();
+   move();
+   turnLeft();
+   }
    public void jumpLeft()
    {
    turnRight();
    move();
-   move();
-   move();
-   move();
    turnLeft();
    move();
    turnLeft();
-   move();
-   move();
-   move();
    move();
    turnRight();
    }
@@ -80,23 +81,24 @@ public class BoxTopRacer extends Racer {
    arg.put(3);
    arg.turnAround();
    arg.move();
-	}
-   @Override
-	public void jumpRight() {
-	
-   turnLeft();
-   move();
-   move();
-   move();
-   move();
-   turnRight();
-   move();
-   turnRight();
-   move();
-   move();
-   move();
-   move();
-   turnLeft();	
-	}
+ 
+   }  
+  
+  
+   public static void main(String[] args) {
+          
+   Display.openWorld("maps/shuttle.map");
+   Display.setSize(10, 10);
+   Display.setSpeed(8);
+   
+   Racer pete = new Racer(7);
+   Racer alex = new Racer(4);
+   Racer jack = new Racer(1);
+   
+   shuttle(pete);
+   shuttle(alex);
+   shuttle(jack);
+     
+}
 
 }
